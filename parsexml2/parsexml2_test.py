@@ -25,11 +25,16 @@ class Test_parsexml2_test(unittest.TestCase):
                          ]
                         }
         xmlns = "_x007B_04D313F1-5010-E511-80D0-005056866F29_x007D_"
-        tree = parsexml.get_tree(k)
 
         for k in known_answers:
             tree = parsexml.get_tree(k)
-            self.assertDictEqual(parsexml.extract_data(xmlnm, tree), known_answers[k])
+            test_data_generator = parsexml.extract_data(xmlns, tree)
+            for elem in enumerate(test_data_generator):
+                # test the sequentially outputted dictionaries.
+                # the answer for a particular filename, k, is always a sequence of dictionaries in the same order
+                # elem[0] is the enum portion of the tuple.
+                # elem[1] is the generated dictionary from extract_data function being tested
+                self.assertDictEqual(elem[1], known_answers[k][elem[0]])
 
     
 
