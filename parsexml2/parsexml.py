@@ -58,20 +58,27 @@ def get_tree(filename):
 
 def fml_to_lcf(name):
     """ Takes a name from the format "First M Last" or "First Last"
-    and returns "Last, First M" or "Last, First"
+    and returns "Last, First"
 
-    Probably breaks if their last name has a space in it.
+    Breaks if their last name has a space in it, because it confuses it with a middle name.
+    Also breaks if their first name has a space it in.
     """
-    split_name = name.rsplit(maxsplit=1) 
+    split_name = name.split() 
     lcf = split_name[-1] + ', ' + split_name[0]
+
+    # TODO: Print name warnings if names are probably bad.
+    # e.g.  John
+    #       Sally-Anne Jane Smith Johnson
+
     return lcf
 
 
 
 
 if __name__ == '__main__':
-    #filename = r'C:\Users\perm7158\Documents\_Josh\Projects\CRM Term Conversion XML Report\2018-02-02 Term Conversion.xml'
-    filename = r'C:\Users\perm7158\Documents\Visual Studio 2017\Projects\parsexml2\parsexml2\test\Term Conversion - Anonimized Test Data.xml'
+    filename = r'C:\Users\perm7158\Documents\_Josh\Projects\CRM Term Conversion XML Report\2018-02-02 Term Conversion.xml'
+    #filename = r'C:\Users\perm7158\Documents\Visual Studio 2017\Projects\parsexml2\parsexml2\test\Term Conversion - Anonimized Test Data.xml'
+    #filename = r'C:\Users\perm7158\Documents\Visual Studio 2017\Projects\parsexml2\parsexml2\test\Term Conversion - Anonimized Test Data - Importable.xml'
     # Pulled from an example file. I'm not yet sure if it's always the same.
     xmlns = "_x007B_04D313F1-5010-E511-80D0-005056866F29_x007D_"
     

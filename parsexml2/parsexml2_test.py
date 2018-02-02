@@ -6,9 +6,9 @@ import xml.etree.ElementTree as etree
 class Test_parsexml2_test(unittest.TestCase):
     def test_fml_to_lcf(self):
         known_answers = {'Andrew Henning-Kolberg': 'Henning-Kolberg, Andrew',
-                          'John M Smith': 'Smith, John M',
-                          'John': 'John, John',
-
+                         'Andrew James Henning-Kolberg': 'Henning-Kolberg, Andrew',
+                         'John M Smith': 'Smith, John',
+                         'John': 'John, John',
                           }
         for known_answer in known_answers:
             self.assertEqual(parsexml.fml_to_lcf(known_answer), known_answers[known_answer])
