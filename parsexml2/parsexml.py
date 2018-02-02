@@ -3,7 +3,7 @@ import csv
 
 # TODO: Get a better name for this module
 # TODO: Figure out how to extract the namespace from the xml file, or learn if it will always be the same.
-# TODO: Create the output file.
+# DONE: Create the output file.
 # TODO: Create an input dialog for the file names to parse
 
 
@@ -56,6 +56,16 @@ def get_tree(filename):
     
     return tree
 
+def fml_to_lcf(name):
+    """ Takes a name from the format "First M Last" or "First Last"
+    and returns "Last, First M" or "Last, First"
+
+    Probably breaks if their last name has a space in it.
+    """
+
+
+
+
 if __name__ == '__main__':
     #filename = r'C:\Users\perm7158\Documents\_Josh\Projects\CRM Term Conversion XML Report\2018-02-02 Term Conversion.xml'
     filename = r'C:\Users\perm7158\Documents\Visual Studio 2017\Projects\parsexml2\parsexml2\test\Term Conversion - Anonimized Test Data.xml'
@@ -73,10 +83,10 @@ if __name__ == '__main__':
         for phone_call_details_dict in test_gen:
             # Assign the row of data
             due = '2/3/2018' # due date for phone call
-            recipient = phone_call_details_dict['owner']
+            recipient = fml_to_lcf(phone_call_details_dict['owner'])
             assigned_to = 'Henning-Kolberg, Andrew' # Employee to assign the call to
             subject = 'Call RE Term Conversion'
-            regarding = phone_call_details_dict['insured']
+            regarding = fml_to_lcf(phone_call_details_dict['insured'])
             on_behalf_of_team = 'Rang, Joshua David 006525'
 
             # write the row of data

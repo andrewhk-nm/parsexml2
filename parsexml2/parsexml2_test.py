@@ -4,6 +4,13 @@ import xml.etree.ElementTree as etree
 
 
 class Test_parsexml2_test(unittest.TestCase):
+    def fml_to_lcf(self):
+        known_answers = {'Andrew Henning-Kolberg': 'Henning-Kolberg, Andrew',
+                          'John M Smith': 'Smith, John M',
+                          }
+        for known_answer in known_answers:
+            self.assertEqual(parsexml.fml_to_lcf(known_answer), known_answers[known_answer])
+    
     def test_get_tree_class_is_correct(self):
         """ This test tests the get_tree module to make sure
         it returns the correct class, which should be a 
