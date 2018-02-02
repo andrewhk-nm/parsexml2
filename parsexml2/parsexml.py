@@ -1,5 +1,12 @@
+""" Parse an xml term conversion report file 
+into a csv file that can be uploaded into CRM to create phone call records
+for each of the entries.
+
+"""
+
 import xml.etree.ElementTree as etree
 import csv
+import datetime
 
 # TODO: Get a better name for this module
 # TODO: Figure out how to extract the namespace from the xml file, or learn if it will always be the same.
@@ -53,7 +60,6 @@ def get_tree(filename):
     """
     # TDD
     tree = etree.parse(filename)
-    #root = tree.getroot()
     
     return tree
 
@@ -93,7 +99,7 @@ if __name__ == '__main__':
         phone_call_writer = csv.writer(out_csv_file, dialect='excel')
         for phone_call_details_dict in test_gen:
             # Assign the row of data
-            due = '2/3/2018' # due date for phone call
+            due = datetime.date.isoformat(datetime.datetime.today())
             recipient = fml_to_lcf(phone_call_details_dict['owner'])
             assigned_to = 'Henning-Kolberg, Andrew' # Employee to assign the call to
             subject = 'Call RE Term Conversion'
