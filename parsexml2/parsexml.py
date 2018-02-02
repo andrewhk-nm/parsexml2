@@ -62,6 +62,9 @@ def fml_to_lcf(name):
 
     Probably breaks if their last name has a space in it.
     """
+    split_name = name.rsplit(maxsplit=1) 
+    lcf = split_name[-1] + ', ' + split_name[0]
+    return lcf
 
 
 
