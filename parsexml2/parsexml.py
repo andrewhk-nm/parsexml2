@@ -5,6 +5,7 @@ import csv
 # TODO: Figure out how to extract the namespace from the xml file, or learn if it will always be the same.
 # DONE: Create the output file.
 # TODO: Create an input dialog for the file names to parse
+# TODO: test output file ignoring.
 
 
 def extract_data(xmlns, tree):
