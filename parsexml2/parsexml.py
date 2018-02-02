@@ -1,15 +1,20 @@
 import xml.etree.ElementTree as etree
+import csv
 
+# TODO: Get a better name for this module
+# TODO: Figure out how to extract the namespace from the xml file, or learn if it will always be the same.
+# TODO: Create the output file.
+# TODO: Create an input dialog for the file names to parse
 
 
 def extract_data(xmlns, tree):
     """ given an xml tree, output a dictionary of data
 
-    yield {'insured': insured, 'payer': payer, 'owner': owner}
+    yield {'insured': insured, 'payer': payer, 'owner': owner, 'final conversion year': final_year}
     generator
     """
     # This is where I would add more data to extract.
-    # TDDS
+    # TDD
 
     # Find all of the ContactGroup elements
     #all_links = tree.findall('.//{_x007B_04D313F1-5010-E511-80D0-005056866F29_x007D_}ContactGroup')
@@ -60,12 +65,24 @@ if __name__ == '__main__':
     tree = get_tree(filename)
 
     test_gen = extract_data(xmlns, tree)
-    print(list(test_gen))
     
-    
-    #for item in test_gen:
-    #    print(item)
+    with open('./output/output.csv', mode='w', encoding='utf-8', newline='') as out_csv_file:
+        # Print the csv file header
+        out_csv_file.write('Due,Recipient,Assigned To,Subject,Regarding,On Behalf Of Team\n')
+        phone_call_writer = csv.writer(out_csv_file, dialect='excel')
+        for phone_call_details_dict in test_gen:
+            # Assign the row of data
+            due = '2/3/2018' # due date for phone call
+            recipient = phone_call_details_dict['owner']
+            assigned_to = 'Henning-Kolberg, Andrew' # Employee to assign the call to
+            subject = 'Call RE Term Conversion'
+            regarding = phone_call_details_dict['insured']
+            on_behalf_of_team = 'Rang, Joshua David 006525'
 
-    # root[0][0][0][0][0].attrib returns a dictionary of the attributes and their contents
-    # {'PolicyAnnivDate': '1/1/2011 12:00:00 AM\r\n', 'AgeChgDateOrAttainedAge': '03/11\r\n28', 'ContactInformation': 'Client Name\r\n\r\n\r\n', 'Phone': 'H:\r\nM:\r\nB:\r\n\r\n', 'InsuredName': 'I: Client Name \r\nP: Payer Name \r\nO: Owner Name ', 'PlanNameOrPolicyNumber': 'TERM 80\r\n123456789', 'Amount': '100000.00\r\n', 'Premium': '100.00\r\n', 'FinalConvYear': '2099\r\n', 'PolicyYear': '9', 'StatusOrSegment': 'Active\r\n\r\n', 'JointWorkPartner': 'Rang, Joshua David 006525\r\n-------------------------\r\n'}
-    # root[0][0][0][0][0].attrib
+            # write the row of data
+            phone_call_writer.writerow([due, recipient, assigned_to, subject, regarding, on_behalf_of_team])
+    
+    
+    
+
+
