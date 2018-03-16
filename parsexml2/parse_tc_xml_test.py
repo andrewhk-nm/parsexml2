@@ -1,5 +1,5 @@
 import unittest
-import parsexml
+import parse_tc_xml as parsexml
 import xml.etree.ElementTree as etree
 
 
