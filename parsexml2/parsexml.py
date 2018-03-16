@@ -8,6 +8,10 @@ import xml.etree.ElementTree as etree
 import csv
 import datetime
 
+# BRANCHES
+# master will always contain a working version.
+# dev will be my working branch.
+
 # TODO: Get a better name for this module
 # TODO: Figure out how to extract the namespace from the xml file, or learn if it will always be the same.
 # DONE: Create the output file.
@@ -84,6 +88,7 @@ def fml_to_lcf(name):
 
 if __name__ == '__main__':
     # First change and commit on new branch
+    # First change on new branch "dev"
     
     filename = r'C:\Users\perm7158\Documents\_Josh\Projects\CRM Term Conversion XML Report\2018-03-16\Term Conversion.xml'
     #filename = r'C:\Users\perm7158\Documents\Visual Studio 2017\Projects\parsexml2\parsexml2\test\Term Conversion - Anonimized Test Data.xml'
