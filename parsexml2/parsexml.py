@@ -83,7 +83,7 @@ def fml_to_lcf(name):
 
 
 if __name__ == '__main__':
-    filename = r'C:\Users\perm7158\Documents\_Josh\Projects\CRM Term Conversion XML Report\2018-02-02 Term Conversion.xml'
+    filename = r'C:\Users\perm7158\Documents\_Josh\Projects\CRM Term Conversion XML Report\2018-03-16\Term Conversion.xml'
     #filename = r'C:\Users\perm7158\Documents\Visual Studio 2017\Projects\parsexml2\parsexml2\test\Term Conversion - Anonimized Test Data.xml'
     #filename = r'C:\Users\perm7158\Documents\Visual Studio 2017\Projects\parsexml2\parsexml2\test\Term Conversion - Anonimized Test Data - Importable.xml'
     # Pulled from an example file. I'm not yet sure if it's always the same.
