@@ -1,7 +1,6 @@
 """ Parse an xml term conversion report file 
 into a csv file that can be uploaded into CRM to create phone call records
 for each of the entries.
-
 """
 
 import xml.etree.ElementTree as etree
@@ -17,6 +16,8 @@ import datetime
 # DONE: Create the output file.
 # TODO: Create an input dialog for the file names to parse
 # TODO: test output file ignoring.
+# TODO: add to the SendTo directory for easy launching on an xml file
+#       so also parse the command line arguments.
 
 
 def extract_data(xmlns, tree):
